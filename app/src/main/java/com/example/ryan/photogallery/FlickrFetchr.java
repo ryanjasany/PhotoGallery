@@ -1,5 +1,8 @@
 package com.example.ryan.photogallery;
 
+import android.net.Uri;
+import android.util.Log;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -11,6 +14,9 @@ import java.net.URL;
  */
 
 public class FlickrFetchr {
+
+    private static final String TAG = "FlickerFetchr";
+    private static final String API_KEY = "cb3c7f1613cddcbb24bc64c824fd9901";
 
     public byte[] getUrlBytes(String urlSpec) throws IOException
     {
@@ -48,5 +54,21 @@ public class FlickrFetchr {
 
     }
 
+    public void fetchItems(){
+        try{
+            String url = Uri.parse("https://api.flickr.com/services/rest/").buildUpon()
+                    .appendQueryParameter("method", "flickr.photos.getRecent").appendQueryParameter("api_key", API_KEY)
+                    .appendQueryParameter("format", "json").appendQueryParameter("nojsoncallback", "1").appendQueryParameter("extras", "url_s")
+                    .build().toString();
+            String jsonString = getUrlString(url);
+            Log.i(TAG, "Received JSON: " + jsonString);
+        }catch (IOException ioe){
+            Log.e(TAG, "Failed to fetch items", ioe);
 
+        }
+
+
+    }
+
+    //End class
 }

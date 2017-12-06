@@ -9,8 +9,6 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.net.ConnectivityManager;
 import android.os.SystemClock;
-import android.provider.ContactsContract;
-import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.util.Log;
@@ -26,7 +24,7 @@ public class PollService extends IntentService {
     public static final String TAG = "PollService";
 
     //Set interval to 1 minute
-    private static final long POLL_INTERVAL_MS = TimeUnit.MINUTES.toMillis(1);
+    private static final long POLL_INTERVAL_MS = TimeUnit.MINUTES.toMillis(15);
 
 
     public static Intent newIntent(Context context){

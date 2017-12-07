@@ -32,7 +32,7 @@ import java.util.List;
  * Created by Ryan on 11/27/2017.
  */
 
-public class PhotoGalleryFragment extends Fragment{
+public class PhotoGalleryFragment extends VisibleFragment{
 
     private RecyclerView mPhotoRecyclerView;
     private static final String TAG = "PhotoGalleryFragment";
